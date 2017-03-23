@@ -156,6 +156,30 @@ error 6004: The table 'UserScoresLogin.dbo.Roster' is referenced by a relationsh
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="AddUserToBatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="int" Mode="In" />
+          <Parameter Name="batchID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CheckForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CreateBatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="startdate" Type="date" Mode="In" />
+          <Parameter Name="lengthweeks" Type="int" Mode="In" />
+          <Parameter Name="batchID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CreateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fname" Type="varchar" Mode="In" />
+          <Parameter Name="lname" Type="varchar" Mode="In" />
+          <Parameter Name="UserType" Type="int" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RemoveUserFromBatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="UserScoresLoginModelStoreContainer">
           <EntitySet Name="Batch" EntityType="Self.Batch" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExamAssessment" EntityType="Self.ExamAssessment" Schema="dbo" store:Type="Tables" />
@@ -282,7 +306,7 @@ error 6004: The table 'UserScoresLogin.dbo.Roster' is referenced by a relationsh
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="UserScoresLoginEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="UserScoresLoginEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Batches" EntityType="Self.Batch" />
           <EntitySet Name="ExamAssessments" EntityType="Self.ExamAssessment" />
           <EntitySet Name="ExamSettings" EntityType="Self.ExamSetting" />
@@ -301,13 +325,37 @@ error 6004: The table 'UserScoresLogin.dbo.Roster' is referenced by a relationsh
             <End Role="UserType" EntitySet="UserTypes" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
+          <FunctionImport Name="AddUserToBatch">
+            <Parameter Name="userID" Mode="In" Type="Int32" />
+            <Parameter Name="batchID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CheckForUser">
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CreateBatch">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="startdate" Mode="In" Type="DateTime" />
+            <Parameter Name="lengthweeks" Mode="In" Type="Int32" />
+            <Parameter Name="batchID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CreateUser">
+            <Parameter Name="fname" Mode="In" Type="String" />
+            <Parameter Name="lname" Mode="In" Type="String" />
+            <Parameter Name="UserType" Mode="In" Type="Int32" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RemoveUserFromBatch">
+            <Parameter Name="userID" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="UserScoresLoginModelStoreContainer" CdmEntityContainer="UserScoresLoginEntities">
+        <EntityContainerMapping StorageEntityContainer="UserScoresLoginModelStoreContainer" CdmEntityContainer="UserScoresLoginEntities1">
           <EntitySetMapping Name="Batches">
             <EntityTypeMapping TypeName="UserScoresLoginModel.Batch">
               <MappingFragment StoreEntitySet="Batch">
@@ -373,6 +421,11 @@ error 6004: The table 'UserScoresLogin.dbo.Roster' is referenced by a relationsh
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddUserToBatch" FunctionName="UserScoresLoginModel.Store.AddUserToBatch" />
+          <FunctionImportMapping FunctionImportName="CheckForUser" FunctionName="UserScoresLoginModel.Store.CheckForUser" />
+          <FunctionImportMapping FunctionImportName="CreateBatch" FunctionName="UserScoresLoginModel.Store.CreateBatch" />
+          <FunctionImportMapping FunctionImportName="CreateUser" FunctionName="UserScoresLoginModel.Store.CreateUser" />
+          <FunctionImportMapping FunctionImportName="RemoveUserFromBatch" FunctionName="UserScoresLoginModel.Store.RemoveUserFromBatch" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="55c032f603be4e3ea51d49bc885fd737" Name="Diagram1">
+      <Diagram DiagramId="5b1cefe8cca941268925c004f550f899" Name="Diagram1">
         <EntityTypeShape EntityType="UserScoresLoginModel.Batch" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UserScoresLoginModel.ExamAssessment" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="UserScoresLoginModel.ExamSetting" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />

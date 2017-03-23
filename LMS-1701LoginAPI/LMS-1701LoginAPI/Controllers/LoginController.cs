@@ -18,7 +18,7 @@ namespace LMS_1701LoginAPI.Controllers
 {
     public class LoginController : ApiController
     {
-        private UserScoresLoginEntities db = new UserScoresLoginEntities();
+        private UserScoresLoginEntities1 db = new UserScoresLoginEntities1();
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
         // GET: api/Login

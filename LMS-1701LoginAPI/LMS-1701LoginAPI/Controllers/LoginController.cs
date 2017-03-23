@@ -12,16 +12,20 @@ using System.Web.Http.Description;
 using LMS_1701LoginAPI.DAL;
 using DM = LMS_1701LoginAPI.Models;
 using AutoMapper;
+using NLog;
 
 namespace LMS_1701LoginAPI.Controllers
 {
     public class LoginController : ApiController
     {
         private UserScoresLoginEntities db = new UserScoresLoginEntities();
+        private static Logger logger = LogManager.GetCurrentClassLogger();
 
         // GET: api/Login
         public IEnumerable<DM.User> GetUsers()
-        { 
+        {
+
+            logger.Trace("this is a test");
             var temp = db.Users.ToList();
             List<DM.User> users = new List<Models.User>();
             foreach (var item in temp)

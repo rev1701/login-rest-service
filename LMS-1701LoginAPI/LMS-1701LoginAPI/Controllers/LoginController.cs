@@ -13,9 +13,11 @@ using LMS_1701LoginAPI.DAL;
 using DM = LMS_1701LoginAPI.Models;
 using AutoMapper;
 using NLog;
+using System.Web.Http.Cors;
 
 namespace LMS_1701LoginAPI.Controllers
 {
+    
     public class LoginController : ApiController
     {
         private UserScoresLoginEntities1 db = new UserScoresLoginEntities1();
@@ -25,7 +27,7 @@ namespace LMS_1701LoginAPI.Controllers
         public IEnumerable<DM.User> GetUsers()
         {
 
-            logger.Trace("this is a test");
+            logger.Trace("http request to get users from database");
             var temp = db.Users.ToList();
             List<DM.User> users = new List<Models.User>();
             foreach (var item in temp)

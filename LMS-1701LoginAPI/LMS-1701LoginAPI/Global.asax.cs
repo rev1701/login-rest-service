@@ -12,6 +12,7 @@ namespace LMS_1701LoginAPI
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+
         }
     }
 }

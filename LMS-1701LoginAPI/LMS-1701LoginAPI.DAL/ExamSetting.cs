@@ -18,6 +18,8 @@ namespace LMS_1701LoginAPI.DAL
         public ExamSetting()
         {
             this.ExamAssessments = new HashSet<ExamAssessment>();
+            this.ExamQuestions = new HashSet<ExamQuestion>();
+            this.Batches = new HashSet<Batch>();
         }
     
         public int ExamSettingsID { get; set; }
@@ -30,5 +32,9 @@ namespace LMS_1701LoginAPI.DAL
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExamAssessment> ExamAssessments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ExamQuestion> ExamQuestions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Batch> Batches { get; set; }
     }
 }

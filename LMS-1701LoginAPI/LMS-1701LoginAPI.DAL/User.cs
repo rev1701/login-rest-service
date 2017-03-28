@@ -18,17 +18,23 @@ namespace LMS_1701LoginAPI.DAL
         public User()
         {
             this.ExamAssessments = new HashSet<ExamAssessment>();
+            this.ExamSettings_User = new HashSet<ExamSettings_User>();
+            this.Rosters = new HashSet<Roster>();
         }
     
         public int UserPK { get; set; }
         public string fname { get; set; }
         public string lname { get; set; }
-        public Nullable<int> UserType { get; set; }
+        public int UserType { get; set; }
         public string email { get; set; }
         public string password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExamAssessment> ExamAssessments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ExamSettings_User> ExamSettings_User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Roster> Rosters { get; set; }
         public virtual UserType UserType1 { get; set; }
     }
 }

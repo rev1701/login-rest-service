@@ -62,11 +62,32 @@
     <Compile Include="ExamAssessment.cs">
       <DependentUpon>UserScoresLogin.tt</DependentUpon>
     </Compile>
+    <Compile Include="ExamQuestion.cs">
+      <DependentUpon>UserScoresLogin.tt</DependentUpon>
+    </Compile>
     <Compile Include="ExamSetting.cs">
       <DependentUpon>UserScoresLogin.tt</DependentUpon>
     </Compile>
+    <Compile Include="ExamSettings_User.cs">
+      <DependentUpon>UserScoresLogin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionOrder.cs">
+      <DependentUpon>UserScoresLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Roster.cs">
+      <DependentUpon>UserScoresLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>UserScoresLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>UserScoresLogin.tt</DependentUpon>
+    </Compile>
     <Compile Include="StatusType.cs">
+      <DependentUpon>UserScoresLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
       <DependentUpon>UserScoresLogin.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
@@ -92,7 +113,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <EntityDeploy Include="UserScoresLogin.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

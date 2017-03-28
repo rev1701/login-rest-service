@@ -14,15 +14,23 @@ namespace LMS_1701LoginAPI.DAL
     
     public partial class ExamAssessment
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ExamAssessment()
+        {
+            this.QuestionOrders = new HashSet<QuestionOrder>();
+        }
+    
         public int ExamAssessmentID { get; set; }
-        public Nullable<int> UserID { get; set; }
+        public int UserID { get; set; }
         public Nullable<int> Attempts { get; set; }
-        public Nullable<int> SettingsID { get; set; }
+        public int SettingsID { get; set; }
         public Nullable<System.TimeSpan> TimeRemaining { get; set; }
         public Nullable<bool> IsExamComplete { get; set; }
         public Nullable<decimal> Score { get; set; }
     
         public virtual ExamSetting ExamSetting { get; set; }
         public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<QuestionOrder> QuestionOrders { get; set; }
     }
 }

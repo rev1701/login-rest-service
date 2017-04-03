@@ -51,6 +51,35 @@ namespace LMS_1701LoginAPI.Controllers
             return Ok(user);
         }
 
+        //GET
+        [Route("api/Users/GetUser")]
+        [ResponseType(typeof(User))]
+        public async Task<IHttpActionResult> GetUser(string email)
+        {
+            List<User> users = await db.Users.ToListAsync();
+
+            User user = null;
+
+            foreach (User usrObj in users)
+            {
+                if (usrObj.email == email)
+                {
+                    user = usrObj;
+                    break;
+                }
+
+            }
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            Models.User usr = DM.ConvertEntityToModel.UserToModel(user);
+
+            return Ok(usr);
+        }
+
         // PUT: api/Login/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutUser(int id, User user)
